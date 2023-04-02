@@ -3,11 +3,85 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Ping Pong Game</title>
         <link rel="stylesheet" href="styles.css" />
+
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+            crossorigin="anonymous"
+        ></script>
+        <title>Ping Pong Game</title>
     </head>
     <body>
+        <div
+            class="modal fade"
+            id="instructionsModal"
+            tabindex="-1"
+            aria-labelledby="instructionsModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="instructionsModalLabel">
+                            Ping Pong Game
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Instructions & Rules:</h3>
+                        <ul>
+                            <li>
+                                Player 1 uses the 'W' and 'S' keys to move their
+                                paddle up and down.
+                            </li>
+                            <li>
+                                Player 2 uses the Up and Down arrow keys to move
+                                their paddle up and down.
+                            </li>
+                            <li>
+                                Each time a player scores a point, the ball
+                                resets to the center of the canvas.
+                            </li>
+                            <li>
+                                The first player to reach 7 points wins the
+                                game.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-bs-dismiss="modal"
+                        >
+                            Start Game
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <canvas id="pingPongCanvas" width="800" height="400"></canvas>
         <script src="pingPong.js"></script>
+        <script>
+            window.addEventListener("DOMContentLoaded", () => {
+                const instructionsModal = new bootstrap.Modal(
+                    document.getElementById("instructionsModal"),
+                    { backdrop: "static", keyboard: false }
+                );
+                instructionsModal.show();
+            });
+        </script>
     </body>
 </html>
